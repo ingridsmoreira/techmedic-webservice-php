@@ -2,7 +2,7 @@
     "name": "ingridsmoreira/techmedic",
     "description": "techmedic webservice php",
     "type": "webservice",
-    "license": "private",
+    "license": "AFL-1.1",
     "autoload": {
         "psr-4": {
             "Ingridsmoreira\\Techmedic\\": "src/"
