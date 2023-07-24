@@ -14,12 +14,15 @@ class CalendarioModel extends Database{
     }
 
     public function criarCalendario($medicoId, $userId, $data){
-        return $this->insert("INSERT INTO calendario (medicoId, userId, data) VALUES (?, ?, ?)", ["iis", $medicoId, $userId, $data]);
+        $this->insert("INSERT INTO calendario (medicoId, userId, data) VALUES (?, ?, ?)", ["iis", $medicoId, $userId, $data]);
+        return $this->getUserCalendario($userId);
     }
 
     public function deleteCalendario($id)
     {
-        return $this->delete("DELETE FROM calendario WHERE id = ?", ["i", $id]);
+        $calend = $this->getCalendario($id);
+        $this->delete("DELETE FROM calendario WHERE id = ?", ["i", $id]);
+        return $this->getUserCalendario($calend[0]["userId"]);
     }
 } 
 ?>
