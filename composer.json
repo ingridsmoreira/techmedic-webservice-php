@@ -1,0 +1,17 @@
+{
+    "name": "ingridsmoreira/techmedic",
+    "description": "techmedic webservice php",
+    "type": "webservice",
+    "license": "private",
+    "autoload": {
+        "psr-4": {
+            "Ingridsmoreira\\Techmedic\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ingrid Moreira"
+        }
+    ],
+    "require": {}
+}
