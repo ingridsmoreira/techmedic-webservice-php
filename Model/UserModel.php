@@ -1,7 +1,13 @@
 <?php
 require_once PROJECT_ROOT_PATH . "/Model/Database.php";
+require PROJECT_ROOT_PATH .'/vendor/autoload.php';
+use ImageKit\ImageKit;
+use ImageKit\Url\Url;  
+
+
 class UserModel extends Database
 {
+    
     public function getUser($id)
     {
         return $this->select("SELECT id, nome, email, telefone, photoUrl FROM usuarios WHERE id = ?", ["i", $id]);
@@ -52,6 +58,22 @@ class UserModel extends Database
         array_unshift($params, $stringBuilder);
         $this->update("UPDATE usuarios SET ". $setStmt ." WHERE id = ?", $params);
         return $this->getUser($id);
+    }
+
+    public function uploadImage($file, $fileName)
+    {
+        $imageKit = new ImageKit(
+            'public_54VzFp3UNxL8NF7RxUbICMeubSI=',
+            'private_3fZjg74PfHWStxutgRsNQw1cXR0=',
+            'https://ik.imagekit.io/techmedic'
+        );
+        $image = $imageKit->upload(
+            array(
+                "file" => $file,
+                "fileName" => $fileName,
+            )
+        );
+        return $image->result->url;
     }
 
     public function loginUser($email, $senha)

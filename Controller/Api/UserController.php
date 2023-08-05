@@ -136,6 +136,7 @@ class UserController extends BaseController
             );
         }
     }
+    
     /** 
      * "/user/update/" Endpoint - Atualizar User
      */
@@ -169,9 +170,21 @@ class UserController extends BaseController
                     $password = new Password();
                     $senha = $password->encryptString($senha);
                 }
-                $photoUrl = '';
-                if (isset($arrQueryStringParams['photoUrl']) && $arrQueryStringParams['photoUrl']) {
-                    $photoUrl = $arrQueryStringParams['photoUrl'];
+                $file = '';
+                if (isset($arrQueryStringParams['file']) && $arrQueryStringParams['file']) {
+                    $file = $arrQueryStringParams['file'];
+                }
+                $fileName = '';
+                if (isset($arrQueryStringParams['fileName']) && $arrQueryStringParams['fileName']) {
+                    $fileName = $arrQueryStringParams['fileName'];
+                }
+                $photoAux = "";
+                if($file !== "" && $fileName !== ""){
+                    $photoAux = $userModel->uploadImage($file, $fileName);
+                }
+                $photoUrl = "";
+                if($photoAux !== ""){
+                    $photoUrl = $photoAux;
                 }
                 $user = $userModel->updateUser($id, $nome, $email, $numero, $senha, $photoUrl);
                 $responseData = json_encode($user);

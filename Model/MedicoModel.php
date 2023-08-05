@@ -5,9 +5,9 @@ class MedicoModel extends Database
     public function getMedico($id, $especialidade)
     {
         if($id !== ''){
-            return $this->select("SELECT id, nome, descricao, especialidade, sexo, photoUrl FROM medico WHERE id = ?", ["i", $id]);
+            return $this->select("SELECT * FROM medico WHERE id = ?", ["i", $id]);
         }else if($especialidade !== ''){
-            return $this->select("SELECT id, nome, descricao, especialidade, sexo, photoUrl FROM medico WHERE especialidade = ?", ["s", $especialidade]);
+            return $this->select("SELECT * FROM medico WHERE especialidade = ?", ["s", $especialidade]);
         }        
     }
 

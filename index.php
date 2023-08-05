@@ -12,8 +12,8 @@ if ( !isset($uri[2])) {
     header("HTTP/1.1 404 nao possui url completa");
     exit();
 }
-$strMethodName = $uri[2] . 'Action';
-switch($uri[1]){
+$strMethodName = $uri[3] . 'Action';
+switch($uri[2]){
     case 'user':
         require PROJECT_ROOT_PATH . "/Controller/Api/UserController.php";
         $userObjFeedController = new UserController();
