@@ -10,16 +10,19 @@ class NotificacoesModel extends Database
 
     public function vizualizarNotificacoes($userId)
     {
-        return $this->update("UPDATE notificacoes SET vista = 1 WHERE userId = ?", ["i", $userId]);
+        $this->update("UPDATE notificacoes SET vista = 1 WHERE userId = ?", ["i", $userId]);
+        return $this->getUserNotificacoes($userId);
     }
 
     public function criarNotificacao($userId, $data, $icone, $msg)
     {
-        return $this->insert("INSERT INTO notificacoes (userId, data, icone, mensagem) VALUES (?, ?, ? , ?)", ["isss", $userId, $data, $icone, $msg]);
+        $this->insert("INSERT INTO notificacoes (userId, data, icone, mensagem) VALUES (?, ?, ? , ?)", ["isss", $userId, $data, $icone, $msg]);
+        return $this->getUserNotificacoes($userId);
     }
 
     public function deleteUserNotificacoes($userId)
     {
-        return $this->delete("DELETE FROM notificacoes WHERE userId = ?", ["i", $userId]);
+        $this->delete("DELETE FROM notificacoes WHERE userId = ?", ["i", $userId]);
+        return $this->getUserNotificacoes($userId);
     }
 }

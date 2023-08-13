@@ -92,8 +92,8 @@ class NotificacoesController extends BaseController{
                     $icone = $arrQueryStringParams['icone'];
                 }
                 $msg = '';
-                if (isset($arrQueryStringParams['msg']) && $arrQueryStringParams['msg']) {
-                    $msg = $arrQueryStringParams['msg'];
+                if (isset($arrQueryStringParams['mensagem']) && $arrQueryStringParams['mensagem']) {
+                    $msg = $arrQueryStringParams['mensagem'];
                 }
                 $notificacoes = $notificacoesModel->criarNotificacao($userId, $data, $icone, $msg);
                 $responseData = json_encode($notificacoes);
