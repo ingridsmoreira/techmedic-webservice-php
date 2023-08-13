@@ -1,5 +1,17 @@
 {
-    "require": {
-        "imagekit/imagekit": "^3.0"
-    }
+    "name": "ingridsmoreira/techmedic",
+    "description": "techmedic webservice php",
+    "type": "webservice",
+    "license": "AFL-1.1",
+    "autoload": {
+        "psr-4": {
+            "Ingridsmoreira\\Techmedic\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ingrid Moreira"
+        }
+    ],
+    "require": {}
 }

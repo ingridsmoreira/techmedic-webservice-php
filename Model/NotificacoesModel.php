@@ -15,8 +15,8 @@ class NotificacoesModel extends Database
     }
 
     public function criarNotificacao($userId, $data, $icone, $msg)
-    {
-        $this->insert("INSERT INTO notificacoes (userId, data, icone, mensagem) VALUES (?, ?, ? , ?)", ["isss", $userId, $data, $icone, $msg]);
+    {   
+        $this->insert("INSERT INTO notificacoes (userId, data, icone, mensagem) VALUES (?, ?, ? , ?)", ["isss", $userId, $data, $icone, $msg]);        
         return $this->getUserNotificacoes($userId);
     }
 
